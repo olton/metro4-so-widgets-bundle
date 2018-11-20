@@ -11,3 +11,7 @@ Plugin URI: https://github.com/metro4-so-widgets-bundle/
 License: MIT
 License URI: https://github.com/metro4-so-widgets-bundle/LICENSE
 */
+
+define('M4_SOW_BUNDLE_VERSION', '1.0.0');
+define('M4_SOW_BUNDLE_BASE_FILE', __FILE__);
+
