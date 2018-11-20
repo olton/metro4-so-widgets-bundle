@@ -4,7 +4,7 @@ Welcome to the development page for the Metro 4 SiteOrigin widgets bundle.
 
 ## Contributing
 
-We welcome issue reports and pull requests. If you're familiar with how the widget bundle works, you can even submit entire widgets.
+We welcome issue reports and pull requests. 
 
 ## Support
 
