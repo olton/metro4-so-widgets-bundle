@@ -15,6 +15,8 @@ License URI: https://github.com/metro4-so-widgets-bundle/LICENSE
 define('METRO4_SOW_BUNDLE_VERSION', '1.0.0');
 define('METRO4_SOW_BUNDLE_BASE_FILE', __FILE__);
 
+include plugin_dir_path(__FILE__).'icons/icons.php';
+
 function metro4_enqueue_scripts(){
     global $wp_styles;
     $parents = [];
@@ -33,3 +35,4 @@ function add_metro4_widgets_collection($folders){
     return $folders;
 }
 add_filter('siteorigin_widgets_widget_folders', 'add_metro4_widgets_collection');
+
