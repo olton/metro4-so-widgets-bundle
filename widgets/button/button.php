@@ -83,6 +83,12 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
 	                    'default' => false
                     ),
 
+                    'button_shadow' => array(
+	                    'type' => 'checkbox',
+	                    'label' => __( 'Drop shadow', 'widget-form-fields-text-domain' ),
+	                    'default' => false
+                    ),
+
                     'button_mode' => array(
 	                    'type' => 'select',
 	                    'label' => __( 'Button mode', 'metro4-so-widgets-bundle' ),
@@ -221,6 +227,7 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
         $button_outline = $design['button_outline'];
         $button_flat = $design['button_flat'];
         $button_mode = $design['button_mode'];
+        $button_shadow = $design['button_shadow'];
 
         return array(
             'onclick' => ! empty( $attributes['onclick'] ) ? $attributes['onclick'] : '',
@@ -240,6 +247,7 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
             'button_outline' => $button_outline,
             'button_mode' => $button_mode,
             'button_flat' => $button_flat,
+            'button_shadow' => $button_shadow,
         );
     }
 }
