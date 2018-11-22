@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Metro 4 Button
-Description: A powerful yet simple button widget for your sidebars or Page Builder pages.
+Description: A push button widget.
 Author: Metro 4
 Author URI: https://metroui.org.ua
 */

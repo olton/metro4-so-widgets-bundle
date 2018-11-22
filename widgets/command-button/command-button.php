@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Metro 4 Command Button
-Description: A powerful yet command button widget for your sidebars or Page Builder pages.
+Description: A command button widget.
 Author: Metro 4
 Author URI: https://metroui.org.ua
 */
