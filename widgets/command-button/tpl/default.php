@@ -1,4 +1,4 @@
-<button class="command-button <?php echo esc_attr($button_color_class)?> <?php echo $button_outline ? "outline" : "" ?> <?php echo $icon_right ? "icon-right" : "" ?>"
+<button class="command-button <?php echo esc_attr($classes)?>"
 	<?php echo $id ? 'id="'.esc_attr($id).'"' : '' ?>
 	<?php echo "type='".esc_attr($type)."'" ?>
 	<?php echo $title ? 'title="'.esc_attr($title).'"' : '' ?>

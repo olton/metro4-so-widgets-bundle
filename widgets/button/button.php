@@ -190,15 +190,31 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
         $attributes = $instance['attributes'];
         $design = $instance['design'];
 
-        $button_color_class = ! empty($design['button_color_class']) ? $design['button_color_class'] : '';
-        $button_size = ! empty($design['button_size']) ? $design['button_size'] : '';
+        $classes = [];
 
-        $classes = ! empty( $attributes['classes'] ) ? $attributes['classes'] : '';
-        $classes = implode( ' ',
-            array_map( 'sanitize_html_class',
-                explode( ' ', $classes )
-            )
-        );
+        if ( ! empty($design['button_color_class']) ) {
+        	$classes[] = $design['button_color_class'];
+        }
+        if ( ! empty($design['button_size']) ) {
+        	$classes[] = $design['button_size'];
+        }
+        if ( ! empty($design['button_mode']) ) {
+        	$classes[] = $design['button_mode'];
+        }
+	    if ($design['button_outline']) {
+		    $classes[] = "outline";
+	    }
+	    if ($design['button_flat']) {
+		    $classes[] = "flat-button";
+	    }
+	    if ($design['button_shadow']) {
+		    $classes[] = "drop-shadow";
+	    }
+	    if (! empty( $attributes['classes'] )) {
+		    $classes[] = $attributes['classes'];
+	    }
+
+	    $classes = implode( ' ', array_map( 'sanitize_html_class',$classes ));
 
         $id = false;
         if ( ! empty( $attributes['id'] ) ) {
@@ -242,12 +258,6 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
             'icon' => $instance['button_icon']['icon_selected'],
             'icon_color' => $instance['button_icon']['icon_color'],
             'icon_size' => $instance['button_icon']['icon_size'],
-            'button_color_class' => $button_color_class,
-            'button_size' => $button_size,
-            'button_outline' => $button_outline,
-            'button_mode' => $button_mode,
-            'button_flat' => $button_flat,
-            'button_shadow' => $button_shadow,
         );
     }
 }
