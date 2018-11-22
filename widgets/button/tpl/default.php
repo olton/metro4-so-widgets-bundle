@@ -1,4 +1,4 @@
-<button class="button <?php echo esc_attr($button_color_class)?> <?php echo esc_attr($button_size)?> <?php echo esc_attr($classes)?>"
+<button class="button <?php echo esc_attr($button_color_class)?> <?php echo esc_attr($button_size)?> <?php echo esc_attr($button_mode)?> <?php echo esc_attr($classes)?> <?php echo $button_flat ? "flat-button" : "" ?> <?php echo $button_outline ? "outline" : "" ?>"
     <?php echo $id ? 'id="'.esc_attr($id).'"' : '' ?>
     <?php echo $type ? 'type="'.esc_attr($type).'"' : '' ?>
     <?php echo $title ? 'title="'.esc_attr($title).'"' : '' ?>

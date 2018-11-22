@@ -71,6 +71,29 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
                         ),
                     ),
 
+                    'button_outline' => array(
+	                    'type' => 'checkbox',
+	                    'label' => __( 'Outline button?', 'widget-form-fields-text-domain' ),
+	                    'default' => false
+                    ),
+
+                    'button_flat' => array(
+	                    'type' => 'checkbox',
+	                    'label' => __( 'Flat button?', 'widget-form-fields-text-domain' ),
+	                    'default' => false
+                    ),
+
+                    'button_mode' => array(
+	                    'type' => 'select',
+	                    'label' => __( 'Button mode', 'metro4-so-widgets-bundle' ),
+	                    'default' => '',
+	                    'options' => array(
+		                    ''  => __( 'Default', 'metro4-so-widgets-bundle' ),
+		                    'square'  => __( 'Square', 'metro4-so-widgets-bundle' ),
+		                    'cycle'  => __( 'Cycle', 'metro4-so-widgets-bundle' ),
+	                    ),
+                    ),
+
                     'button_color' => array(
                         'type' => 'color',
                         'label' => __('Button color', 'metro4-so-widgets-bundle'),
@@ -195,6 +218,10 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
             }
         }
 
+        $button_outline = $design['button_outline'];
+        $button_flat = $design['button_flat'];
+        $button_mode = $design['button_mode'];
+
         return array(
             'onclick' => ! empty( $attributes['onclick'] ) ? $attributes['onclick'] : '',
             'text' => $instance['text'],
@@ -210,6 +237,9 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
             'icon_size' => $instance['button_icon']['icon_size'],
             'button_color_class' => $button_color_class,
             'button_size' => $button_size,
+            'button_outline' => $button_outline,
+            'button_mode' => $button_mode,
+            'button_flat' => $button_flat,
         );
     }
 }
