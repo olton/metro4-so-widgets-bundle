@@ -26,7 +26,7 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
     }
 
     function get_template_name($instance) {
-        return 'default';
+        return 'button-template';
     }
 
     function get_widget_form() {
@@ -157,6 +157,7 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
                         'label' => __('Button type', 'metro4-so-widgets-bundle'),
                         'description' => __('Select button type.', 'metro4-so-widgets-bundle'),
                         'options' => array(
+                            '' => __( 'Default', 'widget-form-fields-text-domain' ),
                             'button' => __( 'Button', 'widget-form-fields-text-domain' ),
                             'submit' => __( 'Submit', 'widget-form-fields-text-domain' ),
                             'reset'  => __( 'Reset', 'widget-form-fields-text-domain' ),
@@ -169,10 +170,49 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
                         'description' => __('Additional CSS classes added to the button link.', 'metro4-so-widgets-bundle'),
                     ),
 
-                    'title' => array(
+                    'url' => array(
                         'type' => 'text',
-                        'label' => __('Title attribute', 'metro4-so-widgets-bundle'),
-                        'description' => __('Adds a title attribute to the button link.', 'metro4-so-widgets-bundle'),
+                        'label' => __('URI', 'metro4-so-widgets-bundle'),
+                        'description' => __('Link href.', 'metro4-so-widgets-bundle'),
+                    ),
+
+                    'rel' => array(
+	                    'type' => 'select',
+	                    'label' => __('Link rel', 'metro4-so-widgets-bundle'),
+	                    'description' => __('Adds a rel attribute to the button link.', 'metro4-so-widgets-bundle'),
+	                    'options' => array(
+		                    '' => __( 'Default', 'widget-form-fields-text-domain' ),
+		                    'alternate' => __( 'alternate', 'widget-form-fields-text-domain' ),
+		                    'author' => __( 'author', 'widget-form-fields-text-domain' ),
+		                    'bookmark' => __( 'bookmark', 'widget-form-fields-text-domain' ),
+		                    'help' => __( 'help', 'widget-form-fields-text-domain' ),
+		                    'license' => __( 'license', 'widget-form-fields-text-domain' ),
+		                    'next' => __( 'next', 'widget-form-fields-text-domain' ),
+		                    'nofollow' => __( 'nofollow', 'widget-form-fields-text-domain' ),
+		                    'noreferrer' => __( 'noreferrer', 'widget-form-fields-text-domain' ),
+		                    'prev' => __( 'prev', 'widget-form-fields-text-domain' ),
+		                    'search' => __( 'search', 'widget-form-fields-text-domain' ),
+		                    'tag' => __( 'tag', 'widget-form-fields-text-domain' ),
+	                    )
+                    ),
+
+                    'target_blank' => array(
+	                    'type' => 'checkbox',
+	                    'default' => false,
+	                    'label' => __('Open in a new window', 'so-widgets-bundle'),
+                    ),
+
+                    'target' => array(
+	                    'type' => 'select',
+	                    'label' => __('Link rel', 'metro4-so-widgets-bundle'),
+	                    'description' => __('Link target.', 'metro4-so-widgets-bundle'),
+	                    'options' => array(
+		                    '' => __( 'No defined', 'widget-form-fields-text-domain' ),
+		                    '_self' => __( '_self', 'widget-form-fields-text-domain' ),
+		                    '_blank' => __( '_blank', 'widget-form-fields-text-domain' ),
+		                    '_parent' => __( '_parent', 'widget-form-fields-text-domain' ),
+		                    '_top' => __( '_top', 'widget-form-fields-text-domain' ),
+	                    )
                     ),
 
                     'onclick' => array(
@@ -226,7 +266,11 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
             $title = $attributes['title'];
         }
 
-        $type = $attributes['type'];
+        $type = $attributes['type'] != "" ? $attributes['type'] : false;
+        $rel = $attributes['rel'] != "" ? $attributes['rel'] : false;
+        $url = ! empty( $attributes['url'] ) ? $attributes['url'] : false;
+        $target = ! empty( $attributes['target'] ) ? $attributes['target'] : false;
+
 
         $button_color = isset($design['button_color']) ? $design['button_color'] : false;
         $text_color = isset($design['text_color']) ? $design['text_color'] : false;
@@ -240,11 +284,6 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
             }
         }
 
-        $button_outline = $design['button_outline'];
-        $button_flat = $design['button_flat'];
-        $button_mode = $design['button_mode'];
-        $button_shadow = $design['button_shadow'];
-
         return array(
             'onclick' => ! empty( $attributes['onclick'] ) ? $attributes['onclick'] : '',
             'text' => $instance['text'],
@@ -252,12 +291,15 @@ class Metro4_SOW_Button_Widget extends SiteOrigin_Widget {
             'title' => $title,
             'id' => $id,
             'type' => $type,
+            'rel' => $rel,
             'button_color' => $button_color,
             'text_color' => $text_color,
             'icon_image_url' => $icon_image_url,
             'icon' => $instance['button_icon']['icon_selected'],
             'icon_color' => $instance['button_icon']['icon_color'],
             'icon_size' => $instance['button_icon']['icon_size'],
+            'url' => $url,
+            'target' => $target,
         );
     }
 }

@@ -1,6 +1,9 @@
 <button class="command-button <?php echo esc_attr($classes)?>"
 	<?php echo $id ? 'id="'.esc_attr($id).'"' : '' ?>
-	<?php echo "type='".esc_attr($type)."'" ?>
+	<?php echo $type ? "type='".esc_attr($type)."'": "" ?>
+	<?php echo $url ? 'href="'.esc_attr($url).'"' : '' ?>
+	<?php echo $rel ? 'rel="'.esc_attr($rel).'"' : '' ?>
+	<?php echo $target ? 'target="'.esc_attr($target).'"' : '' ?>
 	<?php echo $title ? 'title="'.esc_attr($title).'"' : '' ?>
 	<?php if ( ! empty( $onclick ) ) echo 'onclick="' . esc_js( $onclick ) . '"'; ?>
 	<?php if ($button_color || $text_color) {?>
